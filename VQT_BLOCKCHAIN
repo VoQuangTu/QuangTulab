@@ -1,4 +1,4 @@
-////Block
+////////*****Tạo lớp Block
 import java.util.Date;
 public class Block {
     public String hash;
@@ -39,7 +39,7 @@ public class Block {
 }
 
 
-//// Khởi tạo lớp DigitalSignatures và phương thức applySha256
+////******Khởi tạo lớp DigitalSignatures và phương thức applySha256
 import java.security.MessageDigest;
 public class DigitalSignatures {
     //Applies Sha256 to a string and returns the result
@@ -67,7 +67,7 @@ public class DigitalSignatures {
 
 
 
-/////////////////Khởi tạo 1 VQT_Chain để “thử nghiệm” việc tạo Blockchai
+/////////****8Khởi tạo 1 VQT_Chain để “thử nghiệm” việc tạo Blockchai
 import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 public class VQT_Chain {
