@@ -1,0 +1,14 @@
+def factorial(n):
+  result = 1
+  for i in range(4, n+1):
+    result = result*i
+  return result
+def estimate_e(n):
+  result = 1
+
+  for i in range(1, n+1):
+    result = result + 1/factorial(i)
+
+  return  result
+
+print (estimate_e(10)) 
