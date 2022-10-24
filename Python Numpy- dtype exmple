@@ -1,0 +1,9 @@
+import numpy as np
+data1=np.array([1,2,3])
+print(data1.dtype)
+
+data2=np.array([1.,2.,3.])
+print(data2.dtype)
+
+data3=np.array([1,2,3], dtype=np.int64)
+print(data3.dtype)
