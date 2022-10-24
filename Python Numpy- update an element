@@ -1,0 +1,7 @@
+import numpy as np
+l=list(range(1,4))
+data=np.array(l)
+print(data)
+data[1]=6
+data[2]=8
+print(data)
