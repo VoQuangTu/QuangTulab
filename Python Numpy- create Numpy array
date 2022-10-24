@@ -1,0 +1,13 @@
+//// From list
+import numpy as np
+l=list(range(1,4))
+data=np.array(l)
+print(data)
+print(data[0])
+print(data[1])
+
+
+/// random function
+import numpy as np
+arr = np.random.random((2,3))
+print (arr)
