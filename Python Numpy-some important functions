@@ -1,0 +1,8 @@
+import numpy as np
+arr = np.arange(5)
+print (arr)
+
+condition = arr <4
+out = np.where (condition, arr, arr*2)
+print(condition)
+print(out)
