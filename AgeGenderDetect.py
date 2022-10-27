@@ -1,9 +1,10 @@
+
 import cv2
 import math
 import argparse
 
 
-#Hàm phát hiện tọa độ khuôn mặt người trong bức hình
+    #Hàm phát hiện tọa độ khuôn mặt người trong bức hình
 def highlightFace(net, frame, conf_threshold=0.7):
     frameOpencvDnn=frame.copy()
     frameHeight=frameOpencvDnn.shape[0]
