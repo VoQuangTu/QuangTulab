@@ -1,14 +1,4 @@
-# Chương trình nhận dạng Giới tính là Male hay Female; 
-# Nhận dạng tuổi với 8 phân nhóm:  (0 – 2), (4 – 6), (8 – 12), (15 – 20), (25 – 32), (38 – 43), (48 – 53), (60 – 100)
-# Sử dụng CNN (Mạng nơ-ron tích chập - convolutional neural network) huấn luyện nhận dạng và phân loại hình ảnh
-#Chương trình sử dụng một tập dữ liệu (dataset) gồm  26,580 bức ảnh; Mỗi bức ảnh đã được gán nhãn là male/female và 1 trong 8 nhóm tuối.
 
-#File opencv_face_detector.pbtxt và File opencv_face_detector_uint8.pb: File định dạng text và nhị phân, là 2 file của TensorFlow
-#2 file này sử dụng để chạy mô hình huấn luyện phát hiện khuôn mặt người trong ảnh, trong file có lưu định nghĩa đồ thi và các trọng số sau huấn luyện
-#age_deploy.prototxt và gender_deploy.prototxt: là kiến ​​trúc mô hình cho mô hình phát hiện Tuổi và Giới tính 
-#Là các tệp văn bản thuần túy có cấu trúc giống JSON chứa tất cả các định nghĩa của lớp mạng thần kinh
-
-#age_net.caffemodel và gender_net.caffemodel: Lưu trọng số mô hình được huấn luyện để phát hiện Tuổi và Giới tính 
 
 import cv2
 import math
