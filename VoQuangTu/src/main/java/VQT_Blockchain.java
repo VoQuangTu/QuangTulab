@@ -5,7 +5,7 @@ import java.util.HashMap;
 //import com.google.gson.GsonBuilder;
 import java.util.Scanner;
 
-public class VQT_Blockchain {
+public class    VQT_Blockchain {
 
     public static ArrayList<VNPT_Tu> blockchain = new ArrayList<VNPT_Tu>();
     public static HashMap<String,TransactionOutput> UTXOs = new HashMap<String,TransactionOutput>();
@@ -17,7 +17,6 @@ public class VQT_Blockchain {
     public static Transaction genesisTransaction;
 
     public static void main(String[] args) {
-        // Nhập tu bàn phím
         Scanner BlockData = new Scanner(System.in);
         //add our blocks to the blockchain ArrayList:
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider()); //Thiết lập bảo mật bằng phương thức BouncyCastleProvider
@@ -25,48 +24,52 @@ public class VQT_Blockchain {
         //Create wallets:
         mobie1 = new Mobie();
         mobie2 = new Mobie();
-        Mobie coinbase = new Mobie();
-
-        //Khởi tạo số lượng điện thoại trong kho 1
+        Mobie mobiebase = new Mobie();
+        // Nhập từ bàn phím
 
         System.out.println("Nhập số lượng điện thoại trong kho 1: ");
         int x = Integer.parseInt(BlockData.nextLine());
-        genesisTransaction = new Transaction(coinbase.publicKey, mobie1.publicKey, x, null);
-        genesisTransaction.generateSignature(coinbase.privateKey);//Gán private key (ký thủ công) vào giao dịch gốc
+
+        //Khởi tạo số lượng điện thoại trong kho 1
+
+        genesisTransaction = new Transaction(mobiebase.publicKey, mobie1.publicKey, x, null);
+        genesisTransaction.generateSignature(mobiebase.privateKey);//Gán private key (ký thủ công) vào giao dịch gốc
         genesisTransaction.transactionId = "0"; //Gán ID cho giao dịch gốc
         genesisTransaction.outputs.add(new TransactionOutput(genesisTransaction.reciepient, genesisTransaction.value, genesisTransaction.transactionId)); //Thêm Transactions Output
         UTXOs.put(genesisTransaction.outputs.get(0).id, genesisTransaction.outputs.get(0)); //Lưu giao dịch đầu tiên vào danh sách UTXOs.
 
         System.out.println("Nhập số lượng điện thoại trong kho 2: ");
         int y = Integer.parseInt(BlockData.nextLine());
-        genesisTransaction = new Transaction(coinbase.publicKey, mobie2.publicKey, y, null);
-        genesisTransaction.generateSignature(coinbase.privateKey);//Gán private key (ký thủ công) vào giao dịch gốc
-        genesisTransaction.transactionId = "0"; //Gán ID cho giao dịch gốc
-        genesisTransaction.outputs.add(new TransactionOutput(genesisTransaction.reciepient, genesisTransaction.value, genesisTransaction.transactionId)); //Thêm Transactions Output
-        UTXOs.put(genesisTransaction.outputs.get(0).id, genesisTransaction.outputs.get(0)); //Lưu giao dịch đầu tiên vào danh sách UTXOs.
+
+        //Khởi tạo số lượng điện thoại trong kho 2
+
+        Transaction genesisTransaction2 = new Transaction(mobiebase.publicKey, mobie2.publicKey, y, null);
+        genesisTransaction2.generateSignature(mobiebase.privateKey);	 //Gán private key (ký thủ công) vào giao dịch gốc
+        genesisTransaction2.transactionId = "0"; //Gán ID cho giao dịch gốc
+        genesisTransaction2.outputs.add(new TransactionOutput(genesisTransaction2.reciepient, genesisTransaction2.value, genesisTransaction2.transactionId)); //Thêm Transactions Output
+        UTXOs.put(genesisTransaction2.outputs.get(0).id, genesisTransaction2.outputs.get(0)); //Lưu giao dịch đầu tiên vào danh sách UTXOs.
+
 
         System.out.println("Đang tạo và đào khối gốc .... ");
         VNPT_Tu genesis = new VNPT_Tu("0");
         genesis.addTransaction(genesisTransaction);
         addBlock(genesis);
 
-
-
-        //Thử nghiệm
-        VNPT_Tu block1 = new VNPT_Tu(genesis.hash);
         System.out.println("\nSố dư điện thoại trong kho 1 là : " + mobie1.getBalance());
         System.out.println("\nSố dư điện thoại trong kho 2 là : " + mobie2.getBalance());
+
+        //Chạy chương trình chuyển điện thoại
+        VNPT_Tu block1 = new VNPT_Tu(genesis.hash);
         System.out.println("\nGiao dịch số lượng điện thoại từ kho 1 đến kho 2 là: ");
         int z = Integer.parseInt(BlockData.nextLine());
         block1.addTransaction(mobie1.sendFunds(mobie2.publicKey, z));
-        ///System.out.println("Hãy nhập số lượng điện thoại cần chuyển: ");
         addBlock(block1);
 
         System.out.println("\nSố dư mới điện thoại trong kho 1 là : " + mobie1.getBalance());
-        System.out.println("Số dư điện thoại trong kho 2 là : " + mobie2.getBalance());
+        System.out.println("Số dư mới điện thoại trong kho 2 là : " + mobie2.getBalance());
 
-        isChainValid();
 
+    isChainValid();
     }
 
     public static Boolean isChainValid() {
