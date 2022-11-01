@@ -49,7 +49,6 @@ public class VQT_Blockchain {
         genesisTransaction2.outputs.add(new TransactionOutput(genesisTransaction2.reciepient, genesisTransaction2.value, genesisTransaction2.transactionId)); //Thêm Transactions Output
         UTXOs.put(genesisTransaction2.outputs.get(0).id, genesisTransaction2.outputs.get(0)); //Lưu giao dịch đầu tiên vào danh sách UTXOs.
 
-
         System.out.println("Đang tạo và đào khối gốc .... ");
         VNPT_Tu genesis = new VNPT_Tu("0");
         genesis.addTransaction(genesisTransaction);
