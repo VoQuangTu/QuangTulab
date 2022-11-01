@@ -17,8 +17,7 @@ public class VQT_Blockchain {
     public static Transaction genesisTransaction;
 
     public static void main(String[] args) {
-        int i=0;
-        // Nhập tu ban phim
+        // Nhập tu bàn phím
         Scanner BlockData = new Scanner(System.in);
         //add our blocks to the blockchain ArrayList:
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider()); //Thiết lập bảo mật bằng phương thức BouncyCastleProvider
